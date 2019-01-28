@@ -18,12 +18,9 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script>
 			$.ajax({
-			  url: "http://www.bcps.org/feeds/StatusFeed.aspx",
-			  data: {
-				zipcode: 21120
-			  },
+			  url: "http://www.bcps.org/feeds/StatusFeed.aspx"
 			  success: function( result ) {
-				$( "#weather-temp" ).html( "<strong>" + result + "</strong> degrees" );
+				$( "#status" ).html( "<h1>" + result + "</h1>" );
 			  }
 			});
 		</script>
