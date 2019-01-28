@@ -1,32 +1,41 @@
 <html>
 	<head>
 		<style>
-			div {
-				height: 200px;
-				width: 400px;
-				background: black;
-
+			#status{
 				position: fixed;
 				top: 50%;
 				left: 50%;
-				margin-top: -100px;
-				margin-left: -200px;
+				font-size: 64px;
+				margin-top: -200px;
+				margin-left: -100px;
+			}
+			
+			a{
+				position: fixed;
+				top: 50%;
+				left: 50%;
+				margin-top: 20px;
+				margin-left: -45px;
 			}
 		</style>
 	
 		<title>Is BCPS Closed Today?</title>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script>
-			$.ajax({
-			  url: "http://www.bcps.org/feeds/StatusFeed.aspx"
-			  success: function( result ) {
-				$( "#status" ).html( "<h1>" + result + "</h1>" );
-			  }
+			var res = "";
+			$.get("https://cors-anywhere.herokuapp.com/http://www.bcps.org/feeds/StatusFeed.aspx").done(function (result) {
+				res = result;
+				var status = res.documentElement.getElementsByTagName('title')[1].innerHTML;
+				if(status.includes("normal posted schedule"))
+					$("#status").html("<h1>NO</h1>");
+				else
+					$("#status").html("<h1>YES</h1>");
 			});
 		</script>
 	</head>
 	
 	<body>
 		<div id="status"></div>
+		<a href="https://www.bcps.org/status">Status</a>
 	</body>
 </html>
