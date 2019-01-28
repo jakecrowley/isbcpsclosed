@@ -1,0 +1,35 @@
+<html>
+	<head>
+		<style>
+			div {
+				height: 200px;
+				width: 400px;
+				background: black;
+
+				position: fixed;
+				top: 50%;
+				left: 50%;
+				margin-top: -100px;
+				margin-left: -200px;
+			}
+		<style>
+	
+		<title>Is BCPS Closed Today?</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script>
+			$.ajax({
+			  url: "http://www.bcps.org/feeds/StatusFeed.aspx",
+			  data: {
+				zipcode: 21120
+			  },
+			  success: function( result ) {
+				$( "#weather-temp" ).html( "<strong>" + result + "</strong> degrees" );
+			  }
+			});
+		</script>
+	</head>
+	
+	<body>
+		<div id="status"></div>
+	</body>
+</html>
