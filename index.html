@@ -1,13 +1,19 @@
 <html>
 	<head>
 		<style>
-			#status{
-				position: fixed;
+			div{
+				position: relative;
 				top: 50%;
-				left: 50%;
 				font-size: 64px;
 				margin-top: -200px;
 				margin-left: -100px;
+			}
+			
+			#extra{
+				position: fixed;
+				font-size: 25px;
+				margin-top: -28px;
+				margin-left: 50px;
 			}
 			
 			a{
@@ -22,20 +28,23 @@
 		<title>Is BCPS Closed Today?</title>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script>
-			var res = "";
-			$.get("https://cors-anywhere.herokuapp.com/http://www.bcps.org/feeds/StatusFeed.aspx").done(function (result) {
-				res = result;
-				var status = res.documentElement.getElementsByTagName('title')[1].innerHTML;
-				if(status.includes("normal posted schedule"))
-					$("#status").html("<h1>NO</h1>");
-				else
-					$("#status").html("<h1>YES</h1>");
+			$.get("https://cors-anywhere.herokuapp.com/http://www.bcps.org/feeds/StatusFeed.aspx").done(function(result) {
+				var status = result.documentElement.getElementsByTagName('title')[1].innerHTML;
+				if(status.includes("normal posted schedule")){
+					$("#status").html("<center><h1>NO</h1></center>");
+				}else if(status.includes("delay")){
+					$("#status").html("<center><h1>NO</h1></center>");
+					$("#extra").html("<center>(but there's a delay)</center>");
+				}else{
+					$("#status").html("<center><h1>YES</h1></center>");
+				}
 			});
 		</script>
 	</head>
 	
 	<body>
 		<div id="status"></div>
+		<a id="extra"></a>
 		<a href="https://www.bcps.org/status">Status</a>
 	</body>
 </html>
