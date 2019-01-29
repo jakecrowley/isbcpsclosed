@@ -35,6 +35,9 @@
 				}else if(status.includes("delay")){
 					$("#status").html("<center><h1>NO</h1></center>");
 					$("#extra").html("<center>(but there's a delay)</center>");
+				}else if(status.includes("3 hours early")){
+					$("#status").html("<center><h1>NO</h1></center>");
+					$("#extra").html("<center>(but we're closing 3 hours early</center>");
 				}else{
 					$("#status").html("<center><h1>YES</h1></center>");
 				}
