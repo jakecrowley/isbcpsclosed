@@ -32,6 +32,8 @@
 				var status = result.documentElement.getElementsByTagName('title')[1].innerHTML;
 				if(status.includes("normal posted schedule")){
 					$("#status").html("<center><h1>NO</h1></center>");
+				}else if(status.includes("closed")){
+					$("#status").html("<center><h1>YES</h1></center>");
 				}else if(status.includes("2 hours late")){
 					$("#status").html("<center><h1>NO</h1></center>");
 					$("#extra").html("<center>(but we're opening 2 hours late)</center>");
