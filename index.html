@@ -32,9 +32,9 @@
 				var status = result.documentElement.getElementsByTagName('title')[1].innerHTML;
 				if(status.includes("normal posted schedule")){
 					$("#status").html("<center><h1>NO</h1></center>");
-				}else if(status.includes("delay")){
+				}else if(status.includes("2 hours late")){
 					$("#status").html("<center><h1>NO</h1></center>");
-					$("#extra").html("<center>(but there's a delay)</center>");
+					$("#extra").html("<center>(but we're opening 2 hours late)</center>");
 				}else if(status.includes("3 hours early")){
 					$("#status").html("<center><h1>NO</h1></center>");
 					$("#extra").html("<center>(but we're closing 3 hours early)</center>");
